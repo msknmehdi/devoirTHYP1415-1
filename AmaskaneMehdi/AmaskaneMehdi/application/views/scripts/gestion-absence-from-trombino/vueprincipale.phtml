@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Devoir Zend --- Trombinoscope THYP-14/15</title>
+	<link rel="stylesheet" type="text/css" href="../css/amaskanemehdi.css" />
+	<link rel="stylesheet" type="text/css" href="../bootstrap-3.2.0-dist/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="../bootstrap-3.2.0-dist/css/font-awesome.css"></link>
+	
+	<script type="text/javascript" src="../js/jquery-2.1.1.min.js" ></script>
+	<script type="text/javascript" src="../js/amaskanemehdi.js" ></script>
+	<script type="text/javascript" src="../js/d3.js" ></script>
+	<script type="text/javascript" src="../js/dimplejs.js" ></script>
+	<script type="text/javascript" src="../bootstrap-3.2.0-dist/js/bootstrap.min.js" ></script>
+</head>
+    
+	<body>
+		<div id="top-nav" class="fixed skin-6 col-md-12">
+			<span class="brand col-md-12">
+				<span class="">Departement</span>
+				<span class="text-danger text-toggle"> Hypermedia</span>
+			</span><!-- /brand -->		
+            <div class="clear"></div>			
+		</div>
+		<div id="main-container">
+            <div class="grey-container shortcut-wrapper">
+                <a href="../trombinoscope/mehdiamaskane" class="shortcut-link">
+					<span class="shortcut-icon">
+						<i class="fa fa-home"></i>
+					</span>
+					<span class="text">Trombinoscope</span>
+				</a>
+            </div>
+		    <div class="padding-md">
+		        <div class="panel panel-default">
+		        	<div class="panel-heading">
+                		<h3 class="headline m-top-md">Trombinoscope Master THYP
+							<span class="line" ></span>
+                		</h3>
+           	 		</div>
+           	 		<div class="panel panel-body">
+           	 			<div id="bodyTrombi" class="gallery-container">
+           	 			<?php
+ 							foreach ($this->data as $tof) {
+ 								$HtmlString = "<div id='trombi".$tof["id_etudiant"]."' class='gallery-item'>";
+ 								$HtmlString = $HtmlString."<a class='image-wrapper gallery-zoom cboxElement'>";
+ 								$HtmlString = $HtmlString."<img id='".$tof["id_etudiant"]."' class='img' src='".$tof["url_image"]."' />";
+ 								$HtmlString = $HtmlString."<div class='image-overlay'><div class='image-info'><div class='h3 col-md-4'>".$tof["nom"]."</div>";
+ 								$HtmlString = $HtmlString."<div class='col-md-8'><span onclick='AjoutPresence(".$tof["id_etudiant"].");' id='ajoutPresence' class='badge badge-success m-left-xs bg-success'><i class='pointer fa fa-plus'></i></span>";
+ 								$HtmlString = $HtmlString."<span onclick='AjoutAbsence(".$tof["id_etudiant"].");' id='ajoutAbsence' class='badge badge-danger m-left-xs bg-danger'><i class='pointer fa fa-minus'></i></span></div>";
+ 								$HtmlString = $HtmlString."<div class='m-top-md col-md-8'><span onclick='lirePresence(".$tof["id_etudiant"].",this);' id='lirePresence' class='badge badge-success m-left-xs bg-success'><i class='pointer fa fa fa-chevron-down'> Presences</i></span>";
+ 								$HtmlString = $HtmlString."<span onclick='lireAbsence(".$tof["id_etudiant"].",this);' id='lireAbsence' class='badge badge-danger m-left-xs bg-danger'><i class='pointer fa fa-chevron-down'> Absences</i></span></div>";
+ 								$HtmlString = $HtmlString."<div class='col-md-8'><span onclick='getListeAbsencePresence(".$tof["id_etudiant"].",this);' id='getliste' class='m-top-md badge badge-danger m-left-xs bg-danger'><i class='pointer fa fa-list'> Lister All</i></span>";
+ 								$HtmlString = $HtmlString."<span onclick='AfficherChart(".$tof["id_etudiant"].",this);' id='getliste' class='m-top-md badge badge-danger m-left-xs bg-danger'><i class='pointer fa fa-mine-chart'> Graphique</i></span></div>";
+ 									
+ 								$HtmlString = $HtmlString."
+           	
+           	 		        <div id='listeTable' class='displayNone col-md-12'>
+           	 		         <table class='col-md-6'> 
+               	 		        <thead>
+               	 		        <th>type</th>
+           	 		            <th>date</th> 
+           	 		             </thead>
+           	 		             <tbody id='bodyListe'></tbody>
+           	 		        </table>
+           	 		        <div class='col-md-6'>
+           	 		        <span class='col-md-12' id='nombreP'></span>
+           	 		        <span class='col-md-12' id='nombreA'></span>
+           	 		        </div>
+           	 		        
+           	 		        </div>        
+           	 		         <div id='alert' class='col-md-12 alert alert-info displayNone'>Aucune entrée dans la BDD !</div>
+							        </div></div></div>";
+									
+ 								echo $HtmlString;
+ 							}
+						?>
+           	 			</div>
+           	 		</div>
+		        </div>	        
+			</div>
+		</div>
+	</body>
+</html>
+					

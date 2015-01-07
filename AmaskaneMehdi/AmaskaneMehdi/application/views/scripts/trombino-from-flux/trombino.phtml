@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Gestion d'absences par Trombinoscope THYP-14/15</title>
+	<link rel="stylesheet" type="text/css" href="../css/amaskanemehdi.css" />
+	<link rel="stylesheet" type="text/css" href="../bootstrap-3.2.0-dist/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="../bootstrap-3.2.0-dist/css/font-awesome.css"></link>
+	
+	<script type="text/javascript" src="../js/jquery-2.1.1.min.js" ></script>
+	<script type="text/javascript" src="../js/amaskanemehdi.js" ></script>
+	<script type="text/javascript" src="../bootstrap-3.2.0-dist/js/bootstrap.min.js" ></script>
+</head>
+
+	<body>
+		<div id="top-nav" class="fixed skin-6 col-md-12">
+			<span class="brand col-md-12">
+				<span class="">Departement</span>
+				<span class="text-danger text-toggle"> Hypermedia</span>
+			</span><!-- /brand -->		
+            <div class="clear"></div>			
+		</div>
+		<div id="main-container">
+            <div class="grey-container shortcut-wrapper">
+                <a href="../trombinoscope/mehdiamaskane" class="shortcut-link">
+					<span class="shortcut-icon">
+						<i class="fa fa-home"></i>
+					</span>
+					<span class="text">Trombinoscope</span>
+				</a>
+<!--                 <a href="../trombinoscope/mehdiamaskane" class="shortcut-link"> -->
+<!-- 					<span class="shortcut-icon"> -->
+<!-- 						<i class="fa fa-list"></i> -->
+<!-- 					</span> -->
+<!-- 					<span class="text">Absences</span> -->
+<!-- 				</a> -->
+            </div>
+		    <div class="padding-md">
+		        <div class="panel panel-default">
+		        	<div class="panel-heading">
+                		<h3 class="headline m-top-md">Trombinoscope Master THYP
+							<span class="line" ></span>
+                		</h3>
+           	 		</div>
+           	 		<div class="panel panel-body">
+           	 			<div id="bodyTrombi" class="gallery-container">
+           	 			<?php
+							foreach ($this->data as $tof) {
+								$HtmlString = "<div class='gallery-item'>";
+								$HtmlString = $HtmlString."<a class='image-wrapper gallery-zoom cboxElement'>";
+								$HtmlString = $HtmlString."<img id='' class='img' src='".$tof->enclosure['url']."' />";
+								$HtmlString = $HtmlString."<div class='image-overlay'><div class='image-info'><div class='h3 col-md-6'>".$tof->title."</div>";
+								$HtmlString = $HtmlString."</div></div></div>";
+									
+								echo $HtmlString;
+							}
+						?>
+           	 			</div>
+           	 		</div>
+		        </div>	        
+			</div>
+		</div>
+	</body>
+</html>
+					
